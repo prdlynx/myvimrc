@@ -5,6 +5,7 @@ set relativenumber
 set nocompatible
 set number
 filetype off
+set laststatus=2
 syntax on
 "set lazyredraw
 " backspace over anything
@@ -30,15 +31,29 @@ set wildmode=full wildmenu                            " Command-line tab complet
 set infercase                                         " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc
-colorscheme Crystallite
+
+let g:netrw_liststyle  = 3
+
+let g:solarized_termcolors=256
+colorscheme solarized
+syntax enable
+set background=dark
 
 "vundle settings
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'sbdchd/neoformat'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/unite.vim'
+"Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+"c compile shortcut
+map <F2> :w <CR> :!clear && gcc % -o %< && ./%< <CR>
 
